@@ -1,6 +1,6 @@
-path: ./dataset  # The main dataset folder
-train: images/train  # The folder with your training images
-val: images/train    # Use the same folder for validation for now
+path: C:/Users/Jason/Desktop/Object_Detection/hieroglyph_classification/dataset
+train: images/train
+val: images/train
 
 # Number of classes
 nc: 2

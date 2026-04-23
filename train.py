@@ -1,7 +1,19 @@
-from ultralytics import YOLO, checks, hub
-checks()
+from ultralytics import YOLO
 
-hub.login('cd0305b43101b80789be164d6ee40b63128244e9af')
+# Load the base model
+model = YOLO('yolov8n.pt')
 
-model = YOLO('https://hub.ultralytics.com/models/g0C0KQKkX3y9D6iunMIo')
-results = model.train()
+if __name__ == '__main__':
+    print("Starting training on NVIDIA GPU...")
+    
+    # Train the model
+    results = model.train(
+        data='dataset/data.yaml',
+        epochs=50,       
+        imgsz=640,
+        batch=16,           # Increased to 16 because your GPU is powerful!
+        name='hieroglyph_gpu',
+        device=0            # MAGIC WORD FOR PC: '0' means your primary NVIDIA GPU
+    )
+    
+    print("Training finished! Look for best.pt in the runs/detect/hieroglyph_gpu/weights/ folder.")

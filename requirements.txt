@@ -1,0 +1,3 @@
+# NVIDIA GPU: install these first, then ultralytics (otherwise you get torch+cpu)
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+ultralytics>=8.0.0

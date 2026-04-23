@@ -5,3 +5,8 @@ __pycache__/
 
 # Large local artifact not suitable for regular git
 dataset.zip
+
+# Training outputs and downloaded weights
+runs/
+yolo26n.pt
+dataset/labels/*.cache

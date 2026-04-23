@@ -5,7 +5,7 @@ model = YOLO('yolov8n.pt')
 
 # Train the model
 results = model.train(
-    data='data.yaml',
+    data='dataset/data.yaml',
     epochs=50,       # 50 loops is good for a quick test
     imgsz=640,
     batch=8,         # Lower batch size is safer for standard laptops
