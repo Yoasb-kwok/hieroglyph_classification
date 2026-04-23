@@ -1,15 +1,18 @@
-from ultralytics import YOLO
+from pathlib import Path
 
-# Load the smallest, fastest YOLO model (perfect for iPhone)
-model = YOLO('yolov8n.pt')
+from ultralytics import YOLO, settings
 
-# Train the model
-results = model.train(
-    data='dataset/data.yaml',
-    epochs=50,       # 50 loops is good for a quick test
-    imgsz=640,
-    batch=8,         # Lower batch size is safer for standard laptops
-    name='hieroglyph_test'
-)
+HERE = Path(__file__).resolve().parent
+settings.update({"datasets_dir": str(HERE)})
 
-print("Finished! Look for your best.pt file in runs/detect/hieroglyph_test/weights/")
+model = YOLO("yolov8n.pt")
+
+if __name__ == "__main__":
+    results = model.train(
+        data=str(HERE / "dataset" / "data.yaml"),
+        epochs=50,
+        imgsz=640,
+        batch=8,
+        name="hieroglyph_test",
+    )
+    print("Finished! Look for your best.pt file in runs/detect/hieroglyph_test/weights/")
